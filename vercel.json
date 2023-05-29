@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "nodejs-portfolio-ts",
+  "name": "websocket-back",
   "builds": [
     { "src": "src/index.ts", "use": "@vercel/node" }
   ],
