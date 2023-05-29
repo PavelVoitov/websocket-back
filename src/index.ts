@@ -28,11 +28,9 @@ index.get('/', (req, res) => {
 });
 
 socket.on('connection', (socketChannel) => {
-	debugger
 	socketChannel.on('client-message-sent', (message: string) => {
 		console.log((message))
 	})
-	socketChannel.emit('init-messages-published', messages)
 })
 
 server.listen(PORT, () => {
