@@ -31,6 +31,7 @@ socket.on('connection', (socketChannel) => {
 	socketChannel.on('client-message-sent', (message: string) => {
 		console.log((message))
 	})
+	socketChannel.emit('init-messages-published', messages)
 })
 
 server.listen(PORT, () => {
