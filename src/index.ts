@@ -1,12 +1,18 @@
 import express from 'express'
 import http from 'http'
 import {Server} from 'socket.io'
+const session = require('express-session');
 
 const cors = require('cors');
 
 const index = express()
 
-index.use(cors());
+index.use(cors())
+index.use(session({
+	secret: 'your-secret-key',
+	resave: true,
+	saveUninitialized: true,
+}))
 
 const server = http.createServer(index)
 const socket = new Server(server, {
