@@ -2,13 +2,13 @@ import express from 'express'
 import http from  'http'
 import {Server} from 'socket.io'
 
-const app = express()
-const server = http.createServer(app)
+const index = express()
+const server = http.createServer(index)
 const io = new Server(server)
 
 const PORT = process.env.PORT || 3011
 
-app.get('/', (req, res) => {
+index.get('/', (req, res) => {
 	res.send('<h1>Hello world</h1>');
 });
 
@@ -24,7 +24,7 @@ server.listen(PORT, () => {
 // const { Server } = require("socket.io");
 // const io = new Server(server);
 //
-// app.get('/', (req, res) => {
+// index.get('/', (req, res) => {
 // 	res.sendFile(__dirname + '/index.html');
 // });
 //
