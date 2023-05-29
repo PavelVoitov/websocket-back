@@ -9,10 +9,11 @@ const io = new Server(server)
 const PORT = process.env.PORT || 3011
 
 app.get('/', (req, res) => {
-	res.send('<h1>Hello world</h1>');
+	res.sendFile(__dirname + '../dist/app.js');
+	// res.send('<h1>Hello world</h1>');
 });
 
-io.on('connection', (io) => {
+io.on('connection', () => {
 	console.log(('a user connected'))
 })
 
