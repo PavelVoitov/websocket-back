@@ -1,6 +1,7 @@
 import express from 'express'
-import http from  'http'
+import http from 'http'
 import {Server} from 'socket.io'
+
 const cors = require('cors');
 
 const index = express()
@@ -15,10 +16,10 @@ const socket = new Server(server, {
 });
 
 const messages = [
-		{message: "Hi", id: "sdfwaf5", user: {id: "4534132dawd", name: "Pavel Voitov"}},
-		{message: "Hi", id: "sdfdaf5", user: {id: "dwadwad5556", name: "chat GPT"}},
+	{message: "Hi", id: "sdfwaf5", user: {id: "4534132dawd", name: "Pavel Voitov"}},
+	{message: "Hi", id: "sdfdaf5", user: {id: "dwadwad5556", name: "chat GPT"}},
 	{message: "How are you?", id: "sdfddf5", user: {id: "dwadwad5556", name: "Pavel Voitov"}}
-	]
+]
 
 
 const PORT = process.env.PORT || 3011
@@ -29,7 +30,9 @@ index.get('/', (req, res) => {
 
 socket.on('connection', (socketChannel) => {
 	socketChannel.on('client-message-sent', (message: string) => {
-		console.log((message))
+		const messageItem = {message: message, id: Math.random().toString(), user: {id: "dwadwad5556", name: "Pavel Voitov"}}
+		messages.push(messageItem)
+		socket.emit('new-message-sent', messageItem)
 	})
 	socketChannel.emit('init-messages-published', messages)
 })
