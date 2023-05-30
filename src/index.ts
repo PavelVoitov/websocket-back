@@ -23,9 +23,6 @@ const socket = new Server(server, {
 		methods: ['GET', 'POST', 'PUT', 'DELETE'],
 		credentials: true,
 	},
-	path: '/socket.io',
-	transports: ['websocket'],
-	// secure: true
 });
 
 const messages = [
