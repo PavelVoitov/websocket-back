@@ -12,6 +12,7 @@ index.use(session({
 	secret: 'your-secret-key',
 	resave: true,
 	saveUninitialized: true,
+	cookie: { secure: true, sameSite: 'none' }
 }))
 
 const server = http.createServer(index)
@@ -19,7 +20,7 @@ const socket = new Server(server, {
 	cors: {
 		origin: 'http://localhost:3000',
 		methods: ['GET', 'POST', 'PUT', 'DELETE'],
-		credentials: true
+		credentials: true,
 	}
 });
 
