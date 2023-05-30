@@ -23,7 +23,9 @@ const socket = new Server(server, {
 		methods: ['GET', 'POST', 'PUT', 'DELETE'],
 		credentials: true,
 	},
-	transports: ['websocket', 'polling'],
+	path: '/socket.io',
+	transports: ['websocket'],
+	// secure: true
 });
 
 const messages = [
@@ -41,7 +43,7 @@ index.get('/', (req, res) => {
 
 const usersState = new Map()
 
-socket.on('connection', (socketChannel) => {
+socket.on('connection',  (socketChannel) => {
 
 	usersState.set(socketChannel, {id: Math.random().toString(), name: "anonymous"})
 
