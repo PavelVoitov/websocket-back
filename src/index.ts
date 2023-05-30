@@ -24,7 +24,6 @@ const socket = new Server(server, {
 		credentials: true,
 	},
 	transports: ['websocket', 'polling'],
-	pingTimeout: 60000
 });
 
 const messages = [
