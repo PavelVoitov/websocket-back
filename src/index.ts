@@ -22,7 +22,8 @@ const socket = new Server(server, {
 		methods: ['GET', 'POST', 'PUT', 'DELETE'],
 		credentials: true,
 	},
-	transports: ['websocket',  'polling']
+	transports: ['websocket',  'polling'],
+	pingTimeout: 60000
 });
 
 const messages = [
