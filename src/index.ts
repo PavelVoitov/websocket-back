@@ -23,6 +23,7 @@ const socket = new Server(server, {
 		methods: ['GET', 'POST', 'PUT', 'DELETE'],
 		credentials: true,
 	},
+	transports: ["websocket"]
 });
 
 const messages = [
