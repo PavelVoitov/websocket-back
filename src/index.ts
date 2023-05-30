@@ -40,27 +40,9 @@ index.get('/', (req, res) => {
 	res.send('<h1>Hello world</h1>');
 });
 
-const usersState = new Map()
-
 socket.on('connection', (socketChannel) => {
-
-	usersState.set(socketChannel, {id: Math.random().toString(), name: "anonymous"})
-
-	socket.on("disconnect", () => {
-		usersState.delete(socketChannel)
-	})
-
-	socketChannel.on('client-name-sent', (name: string) => {
-		const user = usersState.get(socketChannel)
-		user.name = name
-	})
 	socketChannel.on('client-message-sent', (message: string) => {
-		const user = usersState.get(socketChannel)
-		const messageItem = {
-			message: message,
-			id: Math.random().toString(),
-			user: {id: user.id, name: user.name}
-		}
+		const messageItem = {message: message, id: Math.random().toString(), user: {id: "dwadwad5556", name: "Pavel Voitov"}}
 		messages.push(messageItem)
 		socket.emit('new-message-sent', messageItem)
 	})
